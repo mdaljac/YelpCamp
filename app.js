@@ -5,7 +5,6 @@ var express = require("express"),
     Campground = require("./models/campground"),
     User = require("./models/user"),
     Comment = require("./models/comment"),
-    initDB = require("./seedDB"),
     expressSession = require("express-session"),
     passport = require("passport"),
     localStrategy = require("passport-local"),
@@ -17,7 +16,6 @@ var campgroundRoutes = require("./routes/campground"),
     indexRoutes = require("./routes/index");
 
 mongoose.connect("mongodb://localhost/Yelp-Camp");
-//initDB();
 
 app.set("view engine", "ejs");
 app.use(express.static("public"));
