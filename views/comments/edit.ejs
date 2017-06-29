@@ -1,0 +1,12 @@
+<% include ../partials/header.ejs %>
+
+<h1 class="text-center">Edit comment</h1>
+    <form action="/campgrounds/<%= campground_id %>/comments/<%= comment._id %>?_method=PUT" method="POST" class="center-form">
+        <div class="form-group">
+            <label>Text:</label>
+            <input type="text" class="form-control" name="comment[text]" value="<%= comment.text %>">
+        </div>
+        <input type="submit" value="Update" class="form-control btn btn-primary">
+    </form>
+
+<% include ../partials/footer.html %>
