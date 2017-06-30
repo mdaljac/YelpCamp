@@ -52,7 +52,7 @@ router.post("/register", function(req, res) {
             res.redirect("back");
         }
         passport.authenticate("local")(req, res, function() {
-            req.flash("success", "Welcome " + req.user.username)
+            req.flash("success", "Welcome " + req.user.username);
             res.redirect("/campgrounds");
         });
     });
