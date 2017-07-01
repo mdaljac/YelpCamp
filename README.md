@@ -1,5 +1,5 @@
 # YelpCamp
-Web application made through online course (used HTML, CSS, JS, NODE JS, MongoDB, Express)
+Web application made through online course (used HTML, CSS, JS, Bootstrap, NODE JS, MongoDB, Express)
 
 I made this web app through online course on Udemy platform (https://www.udemy.com/the-web-developer-bootcamp/learn/v4/overview).
 This app is CRUD app where users can create campgrounds, edit and delete them. They can also comment them. Authentication and 
