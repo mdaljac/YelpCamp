@@ -88,3 +88,8 @@ ul li:nth-child(5){
         opacity: 0;
     }
 }
+
+/* Make first background image visible if browser doesn't support css animations -- detected using Modernizr */
+.no-cssanimations ul li:nth-child(1){
+    opacity: 1;
+}
