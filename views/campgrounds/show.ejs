@@ -7,6 +7,7 @@
                 <a class="list-group-item">Item 2</a>
                 <a class="list-group-item">Item 3</a>
             </div>
+            <div id="map"></div>
         </div>
         <div class="col-md-9">
             <div class="thumbnail">
@@ -16,7 +17,7 @@
                     <a class="lead" href="#"><%= campground.name %></a>
                     <p><%= campground.description %></p>
                     
-                    <% if (currentUser && currentUser.equals(campground.author.id)){ %>
+                    <% if (currentUser && currentUser._id.equals(campground.author.id)){ %>
                         <a href="/campgrounds/<%= campground._id %>/edit" class="btn btn-warning">Edit</a>
                         <form class="inline-form" action="/campgrounds/<%= campground._id %>?_method=DELETE" method="POST">
                             <input type="submit" value="Delete" class="btn btn-danger">
@@ -35,7 +36,7 @@
                         <strong><%= comment.author.username %></strong>
                         <span class="pull-right">10 days ago</span>
                         <p class="list-group-item-text comment"><%= comment.text %></p>
-                        <% if (currentUser && currentUser.equals(comment.author.id)){ %>
+                        <% if (currentUser && currentUser._id.equals(comment.author.id)){ %>
                             <a href="/campgrounds/<%= campground._id %>/comments/<%= comment._id %>/edit" class="btn btn-xs btn-warning">Edit</a>
                             <form class="inline-form" action="/campgrounds/<%= campground._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
                                 <input type="submit" value="Delete" class="btn btn-xs btn-danger">
@@ -46,5 +47,21 @@
             </div>
         </div>
     </div>
+    
+    <!--Google maps api implementation-->
+    <script>
+      function initMap() {
+        var location = {lat: <%= campground.lat %>, lng: <%= campground.lng %>};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 10,
+          center: location
+        });
+        var marker = new google.maps.Marker({
+          position: location,
+          map: map
+        });
+      }
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDgGfurIY8H2oboKdEWlnTQVFv-reD3AAs&callback=initMap"></script>
 
 <% include ../partials/footer.html %>

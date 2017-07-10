@@ -20,6 +20,11 @@ textarea.form-control{
     resize: none;
 }
 
+#map{
+    height: 400px;
+    margin-bottom: 20px;
+}
+
 @media screen and (max-width: 550px){
     .center-form{
         width: 80%;

@@ -5,6 +5,9 @@ var mongoose = require("mongoose"),
         image: String,
         description: String,
         price: String,
+        location: String,
+        lat: Number,
+        lng: Number,
         comments: [
             {
                 type: mongoose.Schema.Types.ObjectId,
