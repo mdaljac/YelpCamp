@@ -24,6 +24,15 @@ textarea.form-control{
     height: 400px;
     margin-bottom: 20px;
 }
+#search{
+    width: 215px;
+    margin-top: 10px;
+    transition: width 0.5s;
+}
+#search:focus{
+    width: 275px;
+}
+
 
 @media screen and (max-width: 550px){
     .center-form{

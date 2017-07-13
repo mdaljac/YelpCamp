@@ -6,14 +6,35 @@ var express = require("express"),
 
 
 router.get("/", function(req, res) {
-
-    Campground.find({}, function(err, campgrounds) {
-        if (err) console.log("error occured!!");
-        else res.render("campgrounds/campgrounds", {
-            campgrounds: campgrounds,
-            page: "campgrounds"
+    
+    //ajax is on
+    if (req.query.search && req.xhr){
+        
+        Campground.find({name: { $regex: ".*" + req.query.search + ".*", $options: "i"}}, function(err, result) {
+            
+            if(err) {
+                console.log("error occurred");
+            }
+            else{
+                res.status(200).json(result);
+            }
         });
-    });
+    }
+    else {
+        Campground.find({}, function(err, campgrounds) {
+            if (err) console.log("error occured!!");
+            else {
+
+                if (req.xhr) res.status(200).json(campgrounds);
+                else {
+                    res.render("campgrounds/campgrounds", {
+                                campgrounds: campgrounds,
+                                page: "campgrounds"
+                    });
+                }
+            }
+        });
+    }
 });
 
 router.get("/new", middleware.isLoggedIn, function(req, res) {
